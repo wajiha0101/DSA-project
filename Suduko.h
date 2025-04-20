@@ -1,11 +1,13 @@
 #pragma once
 #include<iostream>
 #include <iomanip>
+#include <fstream>
+
 
 using namespace std;
 
 const int n = 9;
-int grid[n][n] = {
+int grid[n][n]; /*= {
     {5, 3, 0, 0, 7, 0, 0, 0, 0},
     {6, 0, 0, 1, 9, 5, 0, 0, 0},
     {0, 9, 8, 0, 0, 0, 0, 6, 0},
@@ -15,7 +17,7 @@ int grid[n][n] = {
     {0, 6, 0, 0, 0, 0, 2, 8, 0},
     {0, 0, 0, 4, 1, 9, 0, 0, 5},
     {0, 0, 0, 0, 8, 0, 0, 7, 9}
-};
+};*/
 
 void printboard()
 {
@@ -67,7 +69,7 @@ bool isSafe(int row, int col, int num)
     return true;
 }
 
-bool solvesuduko()
+bool solvesudoku()
 {
     for (int i = 0; i < n; i++)
     {
@@ -80,9 +82,34 @@ bool solvesuduko()
                     if (isSafe(i, j, num))
                     {
                         grid[i][j] = num;
+                        if (solvesudoku())
+                            return true;
+
+                        grid[i][j] = 0;
                     }
                 }
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+void inputValue()
+{
+    cout << "Enter a number to solve sukodu:" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Enter 9 numbers for row " << i + 1 << ": ";
+        for (int j = 0; j < n; j++)
+        {
+            cin >> grid[i][j];
+            while (grid[i][j] < 0 || grid[i][j] > 9)
+            {
+                cout << "Invalid input. Enter a number between 0 and 9: ";
+                cin >> grid[i][j];
             }
         }
     }
 }
+
