@@ -128,14 +128,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EightPuzzle-db.cpp" />
+    <ClCompile Include="EightPuzzle.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sqlite3.c" />
     <ClCompile Include="Sudoku-db.cpp" />
+    <ClCompile Include="Sudoku.cpp" />
+    <ClCompile Include="tic tac toe.cpp" />
+    <ClCompile Include="tui tac toe-db.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EightPuzzle-db.h" />
+    <ClInclude Include="EightPuzzle.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="Sudoku-db.h" />
-    <ClInclude Include="Suduko.h" />
+    <ClInclude Include="Sudoku.h" />
+    <ClInclude Include="tic tac toe-db.h" />
+    <ClInclude Include="tic tac toe.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="sudoku.txt" />

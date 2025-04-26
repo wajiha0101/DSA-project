@@ -1,110 +1,89 @@
-#include<iostream>
-#include "sqlite3.h"
-#include <iomanip>
-#include"Suduko.h"
-//
-//using namespace std;
-//
-//int main() {
-//    string inputFile, outputFile;
-//
-//    cout << "Enter input file name (e.g., sudoku_input.txt): ";
-//    cin >> inputFile;
-//
-//    if (!loadfromfile(inputFile)) {
-//        cout << "Exiting program...\n";
-//        return 1;
-//    }
-//
-//    cout << "\nInitial Sudoku Board:\n";
-//    printboard();
-//
-//    if (solvesudoku()) {
-//        cout << "\nSolved Sudoku Board:\n";
-//        printboard();
-//
-//        cout << "\nEnter output file name to save solution (e.g., sudoku_output.txt): ";
-//        cin >> outputFile;
-//
-//        if (saveToFile(outputFile))
-//            cout << "Solved Sudoku saved to " << outputFile << endl;
-//        else
-//            cout << "Failed to save the board.\n";
-//
-//    }
-//    else {
-//        cout << "No solution exists for this board.\n";
-//    }
-//
-//    return 0;
-//}
-//
+#include <iostream>
+#include "Sudoku-db.h"  
+#include"Sudoku.h"
+#include "tic tac toe.h"  
+#include "eightpuzzle.h"   
+#include "eightpuzzle-db.h"
+using namespace std;
 
-
-
-
-sqlite3* DB;
-
-void createTable() {
-    const char* sql = "CREATE TABLE IF NOT EXISTS Students(ID INT, Name TEXT);";
-    char* messageError;
-    int exit = sqlite3_exec(DB, sql, NULL, 0, &messageError);
-    if (exit != SQLITE_OK) {
-        std::cout << "? Error creating table: " << messageError << std::endl;
-        sqlite3_free(messageError);
-    }
-    else {
-        std::cout << "? Table created successfully!" << std::endl;
-    }
+void displayMenu() {
+    cout << "Welcome to Simplified Smart Puzzle Suite!" << std::endl;
+    cout << "1. Play Sudoku" << endl;
+    cout << "2. Play Tic Tac Toe" << endl;
+    cout << "3. Solve 8 Puzzle" << endl;
+    cout << "4. Exit" << endl;
+    cout << "Choose a game (1-4): ";
 }
 
-void insertData() {
-    const char* sql = "INSERT INTO Students VALUES(1, 'Alice');";
-    char* messageError;
-    int exit = sqlite3_exec(DB, sql, NULL, 0, &messageError);
-    if (exit != SQLITE_OK) {
-        std::cout << "? Error inserting data: " << messageError << std::endl;
-        sqlite3_free(messageError);
-    }
-    else {
-        std::cout << "? Data inserted successfully!" << std::endl;
-    }
-}
 
-void readData() {
-    const char* sql = "SELECT * FROM Students;";
-    sqlite3_stmt* stmt;
-    int exit = sqlite3_prepare_v2(DB, sql, -1, &stmt, NULL);
-    if (exit != SQLITE_OK) {
-        std::cout << "? Error reading data." << std::endl;
+void playSudoku(SudokuDB& db) {
+    string puzzleName;
+    cout << "Enter the name of the Sudoku puzzle to load: ";
+    cin >> puzzleName;
+
+    string puzzleData = db.loadPuzzle(puzzleName);
+    if (puzzleData.empty()) {
+       cout << "Puzzle not found in the database!" << endl;
         return;
     }
 
-    std::cout << "?? Student Records:" << std::endl;
-    while (sqlite3_step(stmt) == SQLITE_ROW) {
-        int id = sqlite3_column_int(stmt, 0);
-        const unsigned char* name = sqlite3_column_text(stmt, 1);
-        std::cout << "ID: " << id << " | Name: " << name << std::endl;
-    }
+    int board[9][9];
+    db.stringToBoard(puzzleData, board);
 
-    sqlite3_finalize(stmt);
+    cout << "Loaded Sudoku Puzzle:" << endl;
+    printboard();
+
+    if (solvesudoku()) {
+        cout << "\nSolved Sudoku Board:" << endl;
+        printboard();
+
+        string solvedPuzzleData = db.boardToString(board);
+        db.savePuzzle(puzzleName + " Solved", solvedPuzzleData);
+        cout << "Solved puzzle saved to database." << endl;
+    }
+    else {
+       cout << "No solution exists for this Sudoku puzzle." << endl;
+    }
+}
+
+
+void playTicTacToe() {
+    TicTacToe game;
+    game.printBoard();
+    game.playGame();
+}
+
+void solveEightPuzzle() {
+    EightPuzzle puzzleSolver;
+    puzzleSolver.solvePuzzle();
 }
 
 int main() {
-    int exit = sqlite3_open("students.db", &DB);
+    SudokuDB sudokuDb;
+    EightPuzzleDB eightDb; 
 
-    if (exit != SQLITE_OK) {
-        std::cout << "? Can't open database." << std::endl;
-        return -1;
+    while (true) {
+        displayMenu();
+        int choice;
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            playSudoku(sudokuDb);
+            break;
+        case 2:
+            playTicTacToe();
+            break;
+        case 3:
+            solveEightPuzzle();
+            break;
+        case 4:
+            cout << "Exiting the program." << endl;
+            return 0;
+        default:
+           cout << "Invalid choice. Please try again." << endl;
+        }
     }
-    else {
-        std::cout << "?? Opened database successfully!" << std::endl;
-    }
 
-    createTable();
-    insertData();
-    readData();
-
-    sqlite3_close(DB);
     return 0;
 }

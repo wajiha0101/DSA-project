@@ -24,15 +24,42 @@
     <ClCompile Include="Sudoku-db.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tic tac toe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tui tac toe-db.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EightPuzzle-db.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EightPuzzle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sudoku.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Suduko.h">
+    <ClInclude Include="Sudoku.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sqlite3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sudoku-db.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tic tac toe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tic tac toe-db.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EightPuzzle-db.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EightPuzzle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
