@@ -135,7 +135,7 @@
     <ClCompile Include="Sudoku-db.cpp" />
     <ClCompile Include="Sudoku.cpp" />
     <ClCompile Include="tic tac toe.cpp" />
-    <ClCompile Include="tui tac toe-db.cpp" />
+    <ClCompile Include="tic tac toe-db.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EightPuzzle-db.h" />

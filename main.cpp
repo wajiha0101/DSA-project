@@ -60,8 +60,7 @@ void solveEightPuzzle() {
 
 int main() {
     SudokuDB sudokuDb;
-    EightPuzzleDB eightDb; 
-
+    
     while (true) {
         displayMenu();
         int choice;
