@@ -102,6 +102,36 @@ void inputValue()
     }
 }
 
+void userSolve()
+{
+    int row, col, num;
+    while (true) {
+        printboard();
+        cout << "Enter Row (1-9), Column (1-9), and Number (1-9), or 0 0 0 to solve/check: ";
+        cin >> row >> col >> num;
+
+        if (row == 0 && col == 0 && num == 0) {
+            break;
+        }
+
+        if (row >= 1 && row <= 9 && col >= 1 && col <= 9 && num >= 1 && num <= 9) {
+            if (grid[row - 1][col - 1] == 0) {
+                if (isSafe(row - 1, col - 1, num)) {
+                    grid[row - 1][col - 1] = num;
+                }
+                else {
+                    cout << "Invalid move!\n";
+                }
+            }
+            else {
+                cout << "Cell already filled.\n";
+            }
+        }
+        else {
+            cout << "Invalid input.\n";
+        }
+    }
+}
 
 
 

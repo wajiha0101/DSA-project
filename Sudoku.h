@@ -12,3 +12,4 @@ void printboard();
 bool isSafe(int row, int col, int num);
 bool solvesudoku();
 void inputValue();
+void userSolve();
