@@ -42,14 +42,15 @@ bool EightPuzzle::isValid(int x, int y) {
     return (x >= 0 && x < N && y >= 0 && y < N);
 }
 
-void EightPuzzle::solvePuzzle() {
-    vector<vector<int>> start = {
-        {1, 2, 3},
-        {4, 0, 6},
-        {7, 5, 8}
-    };
-
-    int x = 1, y = 1; 
+void EightPuzzle::solvePuzzle(const vector<vector<int>>& start) {
+    int x, y;
+    // Find the position of 0 (blank)
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < N; ++j)
+            if (start[i][j] == 0) {
+                x = i;
+                y = j;
+            }
 
     priority_queue<Node, vector<Node>, greater<Node>> pq;
     set<vector<vector<int>>> visited;
@@ -89,4 +90,61 @@ void EightPuzzle::solvePuzzle() {
     }
 
     cout << "No solution found.\n";
+}
+
+
+void EightPuzzle::playPuzzle(const vector<vector<int>>& start) {
+    vector<vector<int>> board = start;
+    int x, y;
+
+    // Find position of blank tile (0)
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < N; ++j)
+            if (board[i][j] == 0) {
+                x = i;
+                y = j;
+            }
+
+    while (true) {
+        cout << "\nCurrent Board:\n";
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                cout << board[i][j] << " ";
+            }
+            cout << endl;
+        }
+
+        if (board == goal) {
+            cout << "?? You solved the puzzle!\n";
+            break;
+        }
+
+        cout << "Move blank tile (U/D/L/R or Q to quit): ";
+        char move;
+        cin >> move;
+
+        int moveIndex = -1;
+        switch (toupper(move)) {
+        case 'D': moveIndex = 0; break;
+        case 'R': moveIndex = 1; break;
+        case 'U': moveIndex = 2; break;
+        case 'L': moveIndex = 3; break;
+        case 'Q': return;
+        default:
+            cout << "Invalid move. Try again.\n";
+            continue;
+        }
+
+        int newX = x + dx[moveIndex];
+        int newY = y + dy[moveIndex];
+
+        if (isValid(newX, newY)) {
+            swap(board[x][y], board[newX][newY]);
+            x = newX;
+            y = newY;
+        }
+        else {
+            cout << "Can't move in that direction!\n";
+        }
+    }
 }

@@ -95,8 +95,22 @@ void playTicTacToe() {
 
 void solveEightPuzzle() {
     EightPuzzle puzzleSolver;
-    puzzleSolver.solvePuzzle();
+
+    int subChoice;
+    cout << "\nChoose 8 Puzzle Mode:\n";
+    cout << "1. Play Yourself\n";
+    cout << "2. Watch AI Solve\n";
+    cout << "Enter choice (1-2): ";
+    cin >> subChoice;
+
+    if (subChoice == 1)
+        puzzleSolver.playPuzzle(); // Manual play
+    else if (subChoice == 2)
+        puzzleSolver.solvePuzzle(); // AI auto-solve
+    else
+        cout << "Invalid choice.\n";
 }
+
 
 int main() {
     SudokuDB sudokuDb;

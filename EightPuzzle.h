@@ -7,7 +7,7 @@ class EightPuzzle {
 public:
     EightPuzzle();
     void solvePuzzle();
-
+    void playPuzzle();
 private:
     struct Node {
         vector<vector<int>> mat;
