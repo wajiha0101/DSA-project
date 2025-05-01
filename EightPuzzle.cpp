@@ -23,7 +23,7 @@ bool EightPuzzle::Node::operator>(const Node& other) const {
     return cost > other.cost;
 }
 
-int EightPuzzle::calculateHeuristic(vector<vector<int>>& mat) {
+int EightPuzzle::calculateHeuristic(const vector<vector<int>>& mat) {
     int dist = 0;
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -37,6 +37,7 @@ int EightPuzzle::calculateHeuristic(vector<vector<int>>& mat) {
     }
     return dist;
 }
+
 
 bool EightPuzzle::isValid(int x, int y) {
     return (x >= 0 && x < N && y >= 0 && y < N);

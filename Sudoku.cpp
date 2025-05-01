@@ -48,10 +48,8 @@ bool isSafe(int row, int col, int num)
     int inirow = row - row % 3;
     int inicol = col - col % 3;
 
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
             if (grid[inirow + i][inicol + j] == num) return false;
         }
     }

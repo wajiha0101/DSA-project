@@ -7,7 +7,7 @@
 using namespace std;
 
 void displayMenu() {
-    cout << "Welcome to Simplified Smart Puzzle Suite!" << std::endl;
+    cout << "Welcome to MindMaze Mini!" << std::endl;
     cout << "1. Play Sudoku" << endl;
     cout << "2. Play Tic Tac Toe" << endl;
     cout << "3. Solve 8 Puzzle" << endl;
@@ -16,42 +16,43 @@ void displayMenu() {
 }
 
 
-void playSudoku(SudokuDB& db) {
-    vector<string> puzzles = db.getAllPuzzleNames();
-    if (puzzles.empty()) {
-        cout << "No puzzles in the database.\n";
-        return;
-    }
+//void playSudoku(SudokuDB& db) {
+//    vector<string> puzzles = db.getAllPuzzleNames();
+//    if (puzzles.empty()) {
+//        cout << "No puzzles in the database.\n";
+//        return;
+//    }
+//
+//    cout << "Available puzzles:\n";
+//    for (size_t i = 0; i < puzzles.size(); ++i) {
+//        cout << i + 1 << ". " << puzzles[i] << "\n";
+//    }
+//
+//    int choice;
+//    cout << "Enter the number of the puzzle to load: ";
+//    cin >> choice;
+//
+//    if (choice < 1 || choice > puzzles.size()) {
+//        cout << "Invalid choice.\n";
+//        return;
+//    }
+//
+//    string selectedPuzzle = puzzles[choice - 1];
+//    string puzzleData = db.loadPuzzle(selectedPuzzle);
+//
+//    if (puzzleData.empty()) {
+//        cout << "Puzzle not found in the database.\n";
+//        return;
+//    }
+//
+//    db.stringToBoard(puzzleData, grid);
+//    cout << "\nPuzzle Loaded. Start solving:\n";
+//
+//    userSolve();  // Only this: user manually enters values in the grid
+//}
 
-    cout << "Available puzzles:\n";
-    for (size_t i = 0; i < puzzles.size(); ++i) {
-        cout << i + 1 << ". " << puzzles[i] << "\n";
-    }
 
-    int choice;
-    cout << "Enter the number of the puzzle to load: ";
-    cin >> choice;
-
-    if (choice < 1 || choice > puzzles.size()) {
-        cout << "Invalid choice.\n";
-        return;
-    }
-
-    string selectedPuzzle = puzzles[choice - 1];
-    string puzzleData = db.loadPuzzle(selectedPuzzle);
-
-    if (puzzleData.empty()) {
-        cout << "Puzzle not found in the database.\n";
-        return;
-    }
-
-    db.stringToBoard(puzzleData, grid);
-    cout << "\nPuzzle Loaded. Start solving:\n";
-
-    userSolve();  // Only this: user manually enters values in the grid
-}
-
-void seedSudokuPuzzles(SudokuDB& db) {
+void playSudoku() {
     int easy[9][9] = {
         {5,3,0, 0,7,0, 0,0,0},
         {6,0,0, 1,9,5, 0,0,0},
@@ -80,10 +81,27 @@ void seedSudokuPuzzles(SudokuDB& db) {
         {2,7,0, 0,0,0, 0,0,0}
     };
 
-    db.savePuzzle("easy1", db.boardToString(easy));
-    db.savePuzzle("hard1", db.boardToString(hard));
-    cout << "Seeded DB with easy1 and hard1 puzzles.\n";
+    cout << "\nChoose a Sudoku Puzzle:\n";
+    cout << "1. Easy\n";
+    cout << "2. Hard\n";
+    cout << "Enter choice (1-2): ";
+    int puzzleChoice;
+    cin >> puzzleChoice;
+
+    if (puzzleChoice == 1)
+        memcpy(grid, easy, sizeof(grid));
+    else if (puzzleChoice == 2)
+        memcpy(grid, hard, sizeof(grid));
+    else {
+        cout << "Invalid choice.\n";
+        return;
+    }
+
+    cout << "\nPuzzle Loaded. Start solving:\n";
+    userSolve();
 }
+
+
 
 
 
@@ -96,20 +114,57 @@ void playTicTacToe() {
 void solveEightPuzzle() {
     EightPuzzle puzzleSolver;
 
-    int subChoice;
+    vector<vector<int>> board1 = {
+        {1, 2, 3},
+        {4, 0, 6},
+        {7, 5, 8}
+    };
+
+    vector<vector<int>> board2 = {
+        {1, 2, 3},
+        {0, 4, 6},
+        {7, 5, 8}
+    };
+
+    vector<vector<int>> board3 = {
+        {2, 8, 3},
+        {1, 6, 4},
+        {7, 0, 5}
+    };
+
+    cout << "\nChoose a Puzzle Board:\n";
+    cout << "1. Easy\n";
+    cout << "2. Medium\n";
+    cout << "3. Hard\n";
+    cout << "Enter choice (1-3): ";
+    int boardChoice;
+    cin >> boardChoice;
+
+    vector<vector<int>> selectedBoard;
+    switch (boardChoice) {
+        case 1: selectedBoard = board1; break;
+        case 2: selectedBoard = board2; break;
+        case 3: selectedBoard = board3; break;
+        default: 
+            cout << "Invalid board choice.\n";
+            return;
+    }
+
     cout << "\nChoose 8 Puzzle Mode:\n";
     cout << "1. Play Yourself\n";
     cout << "2. Watch AI Solve\n";
     cout << "Enter choice (1-2): ";
-    cin >> subChoice;
+    int modeChoice;
+    cin >> modeChoice;
 
-    if (subChoice == 1)
-        puzzleSolver.playPuzzle(); // Manual play
-    else if (subChoice == 2)
-        puzzleSolver.solvePuzzle(); // AI auto-solve
+    if (modeChoice == 1)
+        puzzleSolver.playPuzzle(selectedBoard);  
+    else if (modeChoice == 2)
+        puzzleSolver.solvePuzzle(selectedBoard); 
     else
-        cout << "Invalid choice.\n";
+        cout << "Invalid mode.\n";
 }
+
 
 
 int main() {
@@ -122,7 +177,7 @@ int main() {
 
         switch (choice) {
         case 1:
-            playSudoku(sudokuDb);
+            playSudoku();
             break;
         case 2:
             playTicTacToe();

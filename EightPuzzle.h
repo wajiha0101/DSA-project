@@ -6,8 +6,11 @@ using namespace std;
 class EightPuzzle {
 public:
     EightPuzzle();
-    void solvePuzzle();
-    void playPuzzle();
+
+    // Add these two function declarations
+    void solvePuzzle(const vector<vector<int>>& start);
+    void playPuzzle(const vector<vector<int>>& start);
+
 private:
     struct Node {
         vector<vector<int>> mat;
@@ -26,6 +29,6 @@ private:
     int dy[4];
     char dir[4];
 
-    int calculateHeuristic(vector<vector<int>>& mat);
+    int calculateHeuristic(const vector<vector<int>>& mat);
     bool isValid(int x, int y);
 };
