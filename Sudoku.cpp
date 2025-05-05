@@ -56,6 +56,35 @@ bool isSafe(int row, int col, int num)
     return true;
 }
 
+bool isBoardEmpty() {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if (grid[i][j] != 0)
+                return false;
+        }
+    }
+    return true;
+}
+
+
+bool isInitialBoardValid() {
+    for (int row = 0; row < n; ++row) {
+        for (int col = 0; col < n; ++col) {
+            int num = grid[row][col];
+            if (num != 0) {
+                grid[row][col] = 0;  // Temporarily remove the number
+                if (!isSafe(row, col, num)) {
+                    grid[row][col] = num;  // Restore
+                    return false;  // Conflict detected
+                }
+                grid[row][col] = num;  // Restore
+            }
+        }
+    }
+    return true;
+}
+
+
 bool solvesudoku()
 {
     for (int i = 0; i < n; i++)

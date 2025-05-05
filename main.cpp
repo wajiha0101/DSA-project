@@ -16,40 +16,40 @@ void displayMenu() {
 }
 
 
-//void playSudoku(SudokuDB& db) {
-//    vector<string> puzzles = db.getAllPuzzleNames();
-//    if (puzzles.empty()) {
-//        cout << "No puzzles in the database.\n";
-//        return;
-//    }
-//
-//    cout << "Available puzzles:\n";
-//    for (size_t i = 0; i < puzzles.size(); ++i) {
-//        cout << i + 1 << ". " << puzzles[i] << "\n";
-//    }
-//
-//    int choice;
-//    cout << "Enter the number of the puzzle to load: ";
-//    cin >> choice;
-//
-//    if (choice < 1 || choice > puzzles.size()) {
-//        cout << "Invalid choice.\n";
-//        return;
-//    }
-//
-//    string selectedPuzzle = puzzles[choice - 1];
-//    string puzzleData = db.loadPuzzle(selectedPuzzle);
-//
-//    if (puzzleData.empty()) {
-//        cout << "Puzzle not found in the database.\n";
-//        return;
-//    }
-//
-//    db.stringToBoard(puzzleData, grid);
-//    cout << "\nPuzzle Loaded. Start solving:\n";
-//
-//    userSolve();  // Only this: user manually enters values in the grid
-//}
+void playSudoku(SudokuDB& db) {
+    vector<string> puzzles = db.getAllPuzzleNames();
+    if (puzzles.empty()) {
+        cout << "No puzzles in the database.\n";
+        return;
+    }
+
+    cout << "Available puzzles:\n";
+    for (size_t i = 0; i < puzzles.size(); ++i) {
+        cout << i + 1 << ". " << puzzles[i] << "\n";
+    }
+
+    int choice;
+    cout << "Enter the number of the puzzle to load: ";
+    cin >> choice;
+
+    if (choice < 1 || choice > puzzles.size()) {
+        cout << "Invalid choice.\n";
+        return;
+    }
+
+    string selectedPuzzle = puzzles[choice - 1];
+    string puzzleData = db.loadPuzzle(selectedPuzzle);
+
+    if (puzzleData.empty()) {
+        cout << "Puzzle not found in the database.\n";
+        return;
+    }
+
+    db.stringToBoard(puzzleData, grid);
+    cout << "\nPuzzle Loaded. Start solving:\n";
+
+    userSolve();  // Only this: user manually enters values in the grid
+}
 
 
 void playSudoku() {

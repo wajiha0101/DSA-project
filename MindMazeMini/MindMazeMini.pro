@@ -1,24 +1,37 @@
-QT       += core gui
+QT += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    gameselection.cpp \
+    sudokugame.cpp \
+    backend/Sudoku.cpp \
+    backend/Sudoku-db.cpp \
+    sqlite3.c \
+    sudokulogic.cpp
+
 
 HEADERS += \
-    mainwindow.h
+    gameselection.h \
+    mainwindow.h \
+    sudokugame.h \
+    backend/Sudoku.h \
+    backend/Sudoku-db.h \
+    sqlite3.h \
+    sudokulogic.h
 
 FORMS += \
-    mainwindow.ui
+    gameselection.ui \
+    mainwindow.ui \
+    sudokugame.ui \
+    sudokulogic.ui
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+INCLUDEPATH += $$PWD/backend
+RESOURCES += resources.qrc
+
+INCLUDEPATH += $$PWD/sqlite
+

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/new/imagess">
+        <file>images/apps.6696.9007199266251559.b0b672ab-8ded-4145-acd1-e650150d7879.jpg</file>
+        <file>images/tic-tac-toe-game-linear-outline-icon-neon-style-vector-28341945.jpg</file>
+        <file>images/unnamed.png</file>
+        <file>images/sudoku.jpg</file>
+        <file>images/tic-tac-toe-.jpg</file>
+    </qresource>
+</RCC>

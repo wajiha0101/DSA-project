@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SudokuLogic</class>
+ <widget class="QWidget" name="SudokuLogic">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>758</width>
+    <height>454</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(124, 255, 207);</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>60</y>
+     <width>421</width>
+     <height>312</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="8" column="4">
+     <widget class="QLineEdit" name="cell_84"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLineEdit" name="cell_00"/>
+    </item>
+    <item row="6" column="3">
+     <widget class="QLineEdit" name="cell_63"/>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="cell_81"/>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="cell_01"/>
+    </item>
+    <item row="4" column="2">
+     <widget class="QLineEdit" name="cell_42"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLineEdit" name="cell_40"/>
+    </item>
+    <item row="4" column="7">
+     <widget class="QLineEdit" name="cell_47"/>
+    </item>
+    <item row="3" column="3">
+     <widget class="QLineEdit" name="cell_33"/>
+    </item>
+    <item row="6" column="5">
+     <widget class="QLineEdit" name="cell_65"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="cell_31"/>
+    </item>
+    <item row="3" column="5">
+     <widget class="QLineEdit" name="cell_35"/>
+    </item>
+    <item row="2" column="8">
+     <widget class="QLineEdit" name="cell_28"/>
+    </item>
+    <item row="2" column="7">
+     <widget class="QLineEdit" name="cell_27"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLineEdit" name="cell_70"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLineEdit" name="cell_60"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLineEdit" name="cell_80"/>
+    </item>
+    <item row="7" column="5">
+     <widget class="QLineEdit" name="cell_75"/>
+    </item>
+    <item row="3" column="4">
+     <widget class="QLineEdit" name="cell_34"/>
+    </item>
+    <item row="3" column="2">
+     <widget class="QLineEdit" name="cell_32"/>
+    </item>
+    <item row="7" column="2">
+     <widget class="QLineEdit" name="cell_72"/>
+    </item>
+    <item row="3" column="6">
+     <widget class="QLineEdit" name="cell_36"/>
+    </item>
+    <item row="6" column="6">
+     <widget class="QLineEdit" name="cell_66"/>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLineEdit" name="cell_12"/>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="cell_61"/>
+    </item>
+    <item row="1" column="3">
+     <widget class="QLineEdit" name="cell_13"/>
+    </item>
+    <item row="8" column="7">
+     <widget class="QLineEdit" name="cell_87"/>
+    </item>
+    <item row="8" column="2">
+     <widget class="QLineEdit" name="cell_82"/>
+    </item>
+    <item row="5" column="8">
+     <widget class="QLineEdit" name="cell_58"/>
+    </item>
+    <item row="1" column="8">
+     <widget class="QLineEdit" name="cell_18"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="cell_21"/>
+    </item>
+    <item row="0" column="7">
+     <widget class="QLineEdit" name="cell_07"/>
+    </item>
+    <item row="5" column="7">
+     <widget class="QLineEdit" name="cell_57"/>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLineEdit" name="cell_52"/>
+    </item>
+    <item row="7" column="3">
+     <widget class="QLineEdit" name="cell_73"/>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="cell_51"/>
+    </item>
+    <item row="0" column="6">
+     <widget class="QLineEdit" name="cell_06"/>
+    </item>
+    <item row="8" column="8">
+     <widget class="QLineEdit" name="cell_88"/>
+    </item>
+    <item row="3" column="8">
+     <widget class="QLineEdit" name="cell_38"/>
+    </item>
+    <item row="2" column="4">
+     <widget class="QLineEdit" name="cell_24"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLineEdit" name="cell_50"/>
+    </item>
+    <item row="2" column="6">
+     <widget class="QLineEdit" name="cell_26"/>
+    </item>
+    <item row="0" column="3">
+     <widget class="QLineEdit" name="cell_03"/>
+    </item>
+    <item row="0" column="5">
+     <widget class="QLineEdit" name="cell_05"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLineEdit" name="cell_30"/>
+    </item>
+    <item row="5" column="5">
+     <widget class="QLineEdit" name="cell_55"/>
+    </item>
+    <item row="2" column="2">
+     <widget class="QLineEdit" name="cell_22"/>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="cell_71"/>
+    </item>
+    <item row="8" column="3">
+     <widget class="QLineEdit" name="cell_83"/>
+    </item>
+    <item row="8" column="6">
+     <widget class="QLineEdit" name="cell_86"/>
+    </item>
+    <item row="6" column="4">
+     <widget class="QLineEdit" name="cell_64"/>
+    </item>
+    <item row="2" column="3">
+     <widget class="QLineEdit" name="cell_23"/>
+    </item>
+    <item row="6" column="8">
+     <widget class="QLineEdit" name="cell_68"/>
+    </item>
+    <item row="1" column="4">
+     <widget class="QLineEdit" name="cell_14"/>
+    </item>
+    <item row="4" column="4">
+     <widget class="QLineEdit" name="cell_44"/>
+    </item>
+    <item row="7" column="8">
+     <widget class="QLineEdit" name="cell_78"/>
+    </item>
+    <item row="1" column="5">
+     <widget class="QLineEdit" name="cell_15"/>
+    </item>
+    <item row="0" column="8">
+     <widget class="QLineEdit" name="cell_08"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLineEdit" name="cell_20"/>
+    </item>
+    <item row="4" column="5">
+     <widget class="QLineEdit" name="cell_45"/>
+    </item>
+    <item row="5" column="3">
+     <widget class="QLineEdit" name="cell_53"/>
+    </item>
+    <item row="4" column="3">
+     <widget class="QLineEdit" name="cell_43"/>
+    </item>
+    <item row="7" column="7">
+     <widget class="QLineEdit" name="cell_77"/>
+    </item>
+    <item row="6" column="2">
+     <widget class="QLineEdit" name="cell_62"/>
+    </item>
+    <item row="1" column="7">
+     <widget class="QLineEdit" name="cell_17"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="cell_41"/>
+    </item>
+    <item row="5" column="4">
+     <widget class="QLineEdit" name="cell_54"/>
+    </item>
+    <item row="7" column="6">
+     <widget class="QLineEdit" name="cell_76"/>
+    </item>
+    <item row="8" column="5">
+     <widget class="QLineEdit" name="cell_85"/>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLineEdit" name="cell_02"/>
+    </item>
+    <item row="0" column="4">
+     <widget class="QLineEdit" name="cell_04"/>
+    </item>
+    <item row="4" column="6">
+     <widget class="QLineEdit" name="cell_46"/>
+    </item>
+    <item row="2" column="5">
+     <widget class="QLineEdit" name="cell_25"/>
+    </item>
+    <item row="5" column="6">
+     <widget class="QLineEdit" name="cell_56"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLineEdit" name="cell_10"/>
+    </item>
+    <item row="4" column="8">
+     <widget class="QLineEdit" name="cell_48"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="cell_11"/>
+    </item>
+    <item row="1" column="6">
+     <widget class="QLineEdit" name="cell_16"/>
+    </item>
+    <item row="7" column="4">
+     <widget class="QLineEdit" name="cell_74"/>
+    </item>
+    <item row="3" column="7">
+     <widget class="QLineEdit" name="cell_37"/>
+    </item>
+    <item row="6" column="7">
+     <widget class="QLineEdit" name="cell_67"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="backButton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="solveButton">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>30</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Solve</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

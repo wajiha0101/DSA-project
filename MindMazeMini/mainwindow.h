@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "gameselection.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -19,5 +20,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+     GameSelection *gameSelectionWindow;
+private slots:
+    void openGameSelection();
+
 };
 #endif // MAINWINDOW_H
