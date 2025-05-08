@@ -2,6 +2,10 @@
 #include "ui_gameselection.h"
 #include "sudokugame.h"
 #include "sudokulogic.h"
+#include "tictactoe.h"
+#include "eightpuzzlewidget.h"
+
+
 
 #include <QDebug>
 
@@ -63,19 +67,35 @@ void GameSelection::launchSudokuHard() {
 }
 
 void GameSelection::launchTicTacToe() {
-    qDebug() << "Tic Tac Toe clicked";
+    // After creating TicTacToe instance
+    tictactoe *game = new tictactoe;
+    connect(game, &tictactoe::goBackToMenu, this, &GameSelection::show);  // Show menu again
+    game->show();
+    this->hide(); // Hide GameSelection until user clicks "Back"
+
 }
+
 
 void GameSelection::launchPuzzleEasy() {
     qDebug() << "Puzzle Easy clicked";
+    EightPuzzleWidget *puzzle = new EightPuzzleWidget();
+    puzzle->show();
+    this->hide();
 }
+
 
 void GameSelection::launchPuzzleMedium() {
     qDebug() << "Puzzle Medium clicked";
+    EightPuzzleWidget *puzzle = new EightPuzzleWidget();
+    puzzle->show();
+    this->hide();
 }
 
 void GameSelection::launchPuzzleHard() {
     qDebug() << "Puzzle Hard clicked";
+    EightPuzzleWidget *puzzle = new EightPuzzleWidget();
+    puzzle->show();
+    this->hide();
 }
 
 

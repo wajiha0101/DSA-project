@@ -30,7 +30,11 @@
      <widget class="QLineEdit" name="cell_84"/>
     </item>
     <item row="0" column="0">
-     <widget class="QLineEdit" name="cell_00"/>
+     <widget class="QLineEdit" name="cell_00">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="6" column="3">
      <widget class="QLineEdit" name="cell_63"/>
@@ -39,7 +43,11 @@
      <widget class="QLineEdit" name="cell_81"/>
     </item>
     <item row="0" column="1">
-     <widget class="QLineEdit" name="cell_01"/>
+     <widget class="QLineEdit" name="cell_01">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="4" column="2">
      <widget class="QLineEdit" name="cell_42"/>
@@ -96,13 +104,21 @@
      <widget class="QLineEdit" name="cell_66"/>
     </item>
     <item row="1" column="2">
-     <widget class="QLineEdit" name="cell_12"/>
+     <widget class="QLineEdit" name="cell_12">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="6" column="1">
      <widget class="QLineEdit" name="cell_61"/>
     </item>
     <item row="1" column="3">
-     <widget class="QLineEdit" name="cell_13"/>
+     <widget class="QLineEdit" name="cell_13">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="8" column="7">
      <widget class="QLineEdit" name="cell_87"/>
@@ -114,13 +130,21 @@
      <widget class="QLineEdit" name="cell_58"/>
     </item>
     <item row="1" column="8">
-     <widget class="QLineEdit" name="cell_18"/>
+     <widget class="QLineEdit" name="cell_18">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="2" column="1">
      <widget class="QLineEdit" name="cell_21"/>
     </item>
     <item row="0" column="7">
-     <widget class="QLineEdit" name="cell_07"/>
+     <widget class="QLineEdit" name="cell_07">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="5" column="7">
      <widget class="QLineEdit" name="cell_57"/>
@@ -135,7 +159,11 @@
      <widget class="QLineEdit" name="cell_51"/>
     </item>
     <item row="0" column="6">
-     <widget class="QLineEdit" name="cell_06"/>
+     <widget class="QLineEdit" name="cell_06">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="8" column="8">
      <widget class="QLineEdit" name="cell_88"/>
@@ -153,10 +181,18 @@
      <widget class="QLineEdit" name="cell_26"/>
     </item>
     <item row="0" column="3">
-     <widget class="QLineEdit" name="cell_03"/>
+     <widget class="QLineEdit" name="cell_03">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="0" column="5">
-     <widget class="QLineEdit" name="cell_05"/>
+     <widget class="QLineEdit" name="cell_05">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="3" column="0">
      <widget class="QLineEdit" name="cell_30"/>
@@ -186,7 +222,11 @@
      <widget class="QLineEdit" name="cell_68"/>
     </item>
     <item row="1" column="4">
-     <widget class="QLineEdit" name="cell_14"/>
+     <widget class="QLineEdit" name="cell_14">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="4" column="4">
      <widget class="QLineEdit" name="cell_44"/>
@@ -195,10 +235,18 @@
      <widget class="QLineEdit" name="cell_78"/>
     </item>
     <item row="1" column="5">
-     <widget class="QLineEdit" name="cell_15"/>
+     <widget class="QLineEdit" name="cell_15">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="0" column="8">
-     <widget class="QLineEdit" name="cell_08"/>
+     <widget class="QLineEdit" name="cell_08">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QLineEdit" name="cell_20"/>
@@ -219,7 +267,11 @@
      <widget class="QLineEdit" name="cell_62"/>
     </item>
     <item row="1" column="7">
-     <widget class="QLineEdit" name="cell_17"/>
+     <widget class="QLineEdit" name="cell_17">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="4" column="1">
      <widget class="QLineEdit" name="cell_41"/>
@@ -234,10 +286,18 @@
      <widget class="QLineEdit" name="cell_85"/>
     </item>
     <item row="0" column="2">
-     <widget class="QLineEdit" name="cell_02"/>
+     <widget class="QLineEdit" name="cell_02">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="0" column="4">
-     <widget class="QLineEdit" name="cell_04"/>
+     <widget class="QLineEdit" name="cell_04">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="4" column="6">
      <widget class="QLineEdit" name="cell_46"/>
@@ -249,16 +309,28 @@
      <widget class="QLineEdit" name="cell_56"/>
     </item>
     <item row="1" column="0">
-     <widget class="QLineEdit" name="cell_10"/>
+     <widget class="QLineEdit" name="cell_10">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="4" column="8">
      <widget class="QLineEdit" name="cell_48"/>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="cell_11"/>
+     <widget class="QLineEdit" name="cell_11">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="1" column="6">
-     <widget class="QLineEdit" name="cell_16"/>
+     <widget class="QLineEdit" name="cell_16">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
     </item>
     <item row="7" column="4">
      <widget class="QLineEdit" name="cell_74"/>

@@ -4,6 +4,7 @@
 #include "Sudoku.h"
 #include <QMessageBox>
 #include <QString>
+#include <QDebug>
 
 SudokuLogic::SudokuLogic(QString difficulty, QWidget *parent)
     : QWidget(parent)
@@ -41,7 +42,8 @@ void SudokuLogic::updateGridUI()
 {
     for (int row = 0; row < 9; ++row) {
         for (int col = 0; col < 9; ++col) {
-             QLineEdit *cell = findChild<QLineEdit*>(QString("cell_%1%2").arg(row).arg(col));
+            QString cellName = QString("cell_%1%2").arg(row).arg(col);
+            QLineEdit *cell = findChild<QLineEdit *>(cellName);
             if (cell) {
                 if (grid[row][col] != 0)
                     cell->setText(QString::number(grid[row][col]));
@@ -68,48 +70,88 @@ void SudokuLogic::readGridFromUI()
     }
 }
 
+bool SudokuLogic::isBoardEmpty() {
+    for (int i = 0; i < 9; ++i)
+        for (int j = 0; j < 9; ++j)
+            if (grid[i][j] != 0)
+                return false;
+    return true;
+}
+
+bool SudokuLogic::isInitialBoardValid() {
+    for (int row = 0; row < 9; ++row) {
+        for (int col = 0; col < 9; ++col) {
+            int num = grid[row][col];
+            if (num != 0) {
+                grid[row][col] = 0;
+                if (!isSafe(row, col, num)) {
+                    grid[row][col] = num;
+                    return false;
+                }
+                grid[row][col] = num;
+            }
+        }
+    }
+    return true;
+}
 
 void SudokuLogic::onSolveClicked()
 {
     readGridFromUI();
 
-    // Check if the board is completely empty
-    bool isEmpty = true;
-    for (int row = 0; row < 9 && isEmpty; ++row) {
-        for (int col = 0; col < 9 && isEmpty; ++col) {
-            if (grid[row][col] != 0)
-                isEmpty = false;
-        }
-    }
-
-    if (isEmpty) {
-        QMessageBox::warning(this, "Empty Board", "Please fill in some numbers before solving.");
+    if (isBoardEmpty()) {
+        QMessageBox::warning(this, "Empty", "Board is empty. Please input a puzzle.");
         return;
     }
 
-    // Validate user input before attempting to solve
     if (!isUserInputValid()) {
-        QMessageBox::warning(this, "Invalid Input", "Your input violates Sudoku rules.");
-        return;
+        highlightInvalidCells();
+        QMessageBox::warning(this, "Invalid Input", "Some values are incorrect or violate Sudoku rules.\nThe system will attempt to solve anyway.");
+        // ⚠️ No return here — we still proceed to solve
     }
 
-    // Attempt to solve
     if (solvesudoku()) {
         updateGridUI();
         QMessageBox::information(this, "Solved", "Sudoku solved successfully.");
     } else {
-        QMessageBox::warning(this, "Unsolvable", "No valid solution found.");
+        QMessageBox::warning(this, "Unsolvable", "This Sudoku puzzle cannot be solved.");
+    }
+}
+
+void SudokuLogic::highlightInvalidCells() {
+    // First, reset all borders
+    for (int row = 0; row < 9; ++row) {
+        for (int col = 0; col < 9; ++col) {
+            QLineEdit *cell = findChild<QLineEdit*>(QString("cell_%1%2").arg(row).arg(col));
+            if (cell) {
+                cell->setStyleSheet("");  // Reset
+            }
+        }
+    }
+
+    // Now highlight conflicting cells
+    for (int row = 0; row < 9; ++row) {
+        for (int col = 0; col < 9; ++col) {
+            int num = grid[row][col];
+            if (num == 0) continue;
+
+            grid[row][col] = 0;
+            if (!isSafe(row, col, num)) {
+                QLineEdit *cell = findChild<QLineEdit*>(QString("cell_%1%2").arg(row).arg(col));
+                if (cell) {
+                    cell->setStyleSheet("border: 2px solid red;");
+                }
+            }
+            grid[row][col] = num;
+        }
     }
 }
 
 
-
 bool SudokuLogic::isUserInputValid()
 {
-    // Temporary check grid
     int tempGrid[9][9];
 
-    // Copy user input into tempGrid
     for (int row = 0; row < 9; ++row)
     {
         for (int col = 0; col < 9; ++col)
@@ -124,7 +166,7 @@ bool SudokuLogic::isUserInputValid()
             tempGrid[row][col] = val;
         }
     }
-    // Check each filled cell does not violate Sudoku rules
+
     for (int row = 0; row < 9; ++row)
     {
         for (int col = 0; col < 9; ++col)
@@ -132,9 +174,8 @@ bool SudokuLogic::isUserInputValid()
             int num = tempGrid[row][col];
             if (num == 0) continue;
 
-            tempGrid[row][col] = 0; // Temporarily clear to validate
+            tempGrid[row][col] = 0;
 
-            // Check row, col, and 3x3 subgrid
             for (int i = 0; i < 9; ++i)
             {
                 if (tempGrid[row][i] == num || tempGrid[i][col] == num)
@@ -152,7 +193,7 @@ bool SudokuLogic::isUserInputValid()
                 }
             }
 
-            tempGrid[row][col] = num; // Restore
+            tempGrid[row][col] = num;
         }
     }
 

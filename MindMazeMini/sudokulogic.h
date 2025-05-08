@@ -32,6 +32,9 @@ private:
     void updateGridUI();
     void readGridFromUI();
     bool isUserInputValid();
+    bool isBoardEmpty();
+    bool isInitialBoardValid();
+    void highlightInvalidCells();
 
 signals:
     void goBackToMenu();
