@@ -3,10 +3,7 @@
 #include "sudokugame.h"
 #include "sudokulogic.h"
 #include "tictactoe.h"
-#include "eightpuzzlewidget.h"
-
-
-
+#include "EightPuzzle.h"
 #include <QDebug>
 
 
@@ -78,7 +75,7 @@ void GameSelection::launchTicTacToe() {
 
 void GameSelection::launchPuzzleEasy() {
     qDebug() << "Puzzle Easy clicked";
-    EightPuzzleWidget *puzzle = new EightPuzzleWidget();
+    EightPuzzle *puzzle = new EightPuzzle();
     puzzle->show();
     this->hide();
 }
@@ -86,14 +83,14 @@ void GameSelection::launchPuzzleEasy() {
 
 void GameSelection::launchPuzzleMedium() {
     qDebug() << "Puzzle Medium clicked";
-    EightPuzzleWidget *puzzle = new EightPuzzleWidget();
+    EightPuzzle *puzzle = new EightPuzzle();
     puzzle->show();
     this->hide();
 }
 
 void GameSelection::launchPuzzleHard() {
     qDebug() << "Puzzle Hard clicked";
-    EightPuzzleWidget *puzzle = new EightPuzzleWidget();
+    EightPuzzle *puzzle = new EightPuzzle();
     puzzle->show();
     this->hide();
 }

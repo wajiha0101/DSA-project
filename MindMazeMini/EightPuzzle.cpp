@@ -1,12 +1,13 @@
 #include "EightPuzzle.h"
 #include "ui_EightPuzzle.h"
 #include "gameselection.h"
+#include "EightPuzzle-db.h"
 
 #include <QDebug>
 #include <QMessageBox>
 
 EightPuzzle::EightPuzzle(QWidget *parent)
-    : QWidget(parent), ui(new Ui::EightPuzzle), db("eightpuzzle.db")
+    : QWidget(parent), ui(new Ui::EightPuzzle), db()
 {
     ui->setupUi(this);
 
@@ -38,7 +39,9 @@ EightPuzzle::~EightPuzzle()
 
 void EightPuzzle::loadPuzzleFromDB(const std::string &difficulty)
 {
-    puzzleState = QVector<int>::fromStdVector(db.loadPuzzle(difficulty));
+    auto temp = db.loadPuzzle(difficulty);
+    puzzleState = QVector<int>(temp.begin(), temp.end());
+
     if (puzzleState.size() != 9) {
         QMessageBox::warning(this, "Error", "Failed to load puzzle from DB.");
     }
@@ -47,10 +50,12 @@ void EightPuzzle::loadPuzzleFromDB(const std::string &difficulty)
 void EightPuzzle::updateUI()
 {
     for (int i = 0; i < 9; ++i) {
-        if (puzzleState[i] == 0)
-            buttons[i]->setText("");
-        else
-            buttons[i]->setText(QString::number(puzzleState[i]));
+        if (i < buttons.size()) {
+            if (puzzleState[i] == 0)
+                buttons[i]->setText("");
+            else
+                buttons[i]->setText(QString::number(puzzleState[i]));
+        }
     }
 }
 
@@ -72,14 +77,13 @@ void EightPuzzle::handleTileClicked(int index)
 {
     int zeroIndex = puzzleState.indexOf(0);
 
-    // Check if adjacent
     int row = index / 3;
     int col = index % 3;
     int zeroRow = zeroIndex / 3;
     int zeroCol = zeroIndex % 3;
 
-    if ((abs(row - zeroRow) == 1 && col == zeroCol) || (abs(col - zeroCol) == 1 && row == zeroRow)) {
-        // Swap
+    if ((abs(row - zeroRow) == 1 && col == zeroCol) ||
+        (abs(col - zeroCol) == 1 && row == zeroRow)) {
         std::swap(puzzleState[index], puzzleState[zeroIndex]);
         updateUI();
     }

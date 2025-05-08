@@ -29,6 +29,7 @@ std::vector<int> EightPuzzleDB::loadPuzzle(const std::string& difficulty) {
 //    };
 //}
 
-void EightPuzzleDB::savePuzzle(const string& puzzleName, const vector<vector<int>>& puzzleState) {
+void EightPuzzleDB::savePuzzle(const string& puzzleName, const vector<int>& puzzleState) {
     cout << "Saving Eight Puzzle: " << puzzleName << "\n";
 }
+

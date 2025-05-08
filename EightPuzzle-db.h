@@ -6,9 +6,9 @@ using namespace std;
 class EightPuzzleDB {
 public:
     EightPuzzleDB();
-    std::vector<int> loadPuzzle(const std::string& difficulty);
+    vector<int> loadPuzzle(const std::string& puzzleName);
     /*vector<vector<int>> loadPuzzle(const string& puzzleName);*/
-    void savePuzzle(const string& puzzleName, const vector<vector<int>>& puzzleState);
+    void savePuzzle(const string& puzzleName, const vector<int>& puzzleState);
 };
 
 
