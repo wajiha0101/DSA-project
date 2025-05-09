@@ -2,6 +2,7 @@
 #include "ui_EightPuzzle.h"
 #include "gameselection.h"
 #include "EightPuzzle-db.h"
+#include <QVector>
 
 #include <QDebug>
 #include <QMessageBox>
@@ -39,7 +40,7 @@ EightPuzzle::~EightPuzzle()
 
 void EightPuzzle::loadPuzzleFromDB(const std::string &difficulty)
 {
-    auto temp = db.loadPuzzle(difficulty);
+    auto temp = db.loadPuzzle(difficulty);  // temp is vector<int>
     puzzleState = QVector<int>(temp.begin(), temp.end());
 
     if (puzzleState.size() != 9) {

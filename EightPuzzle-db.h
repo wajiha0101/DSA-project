@@ -1,15 +1,14 @@
 #pragma once
 #include <string>
 #include <vector>
-using namespace std;
 
 class EightPuzzleDB {
 public:
     EightPuzzleDB();
-    vector<int> loadPuzzle(const std::string& puzzleName);
-    /*vector<vector<int>> loadPuzzle(const string& puzzleName);*/
-    void savePuzzle(const string& puzzleName, const vector<int>& puzzleState);
+
+    // Loads a flat 1D puzzle state
+    std::vector<int> loadPuzzle(const std::string& difficulty);
+
+    // Saves a flat 1D puzzle state
+    void savePuzzle(const std::string& puzzleName, const std::vector<int>& puzzleState);
 };
-
-
-

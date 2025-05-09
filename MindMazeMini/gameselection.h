@@ -2,6 +2,10 @@
 #define GAMESELECTION_H
 
 #include <QWidget>
+#include <QPushButton>
+#include <QPixmap>
+#include <QPoint>
+#include <QDebug>
 
 namespace Ui {
 class GameSelection;
@@ -15,18 +19,15 @@ public:
     explicit GameSelection(QWidget *parent = nullptr);
     ~GameSelection();
 
-private slots:
+private slots:  // ✅ FIXED: split private and slots
     void on_GameSelection_customContextMenuRequested(const QPoint &pos);
 
     void launchSudokuEasy();
     void launchSudokuHard();
-
     void launchTicTacToe();
-
     void launchPuzzleEasy();
     void launchPuzzleMedium();
     void launchPuzzleHard();
-
 
 private:
     Ui::GameSelection *ui;
