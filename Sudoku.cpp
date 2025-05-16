@@ -1,14 +1,13 @@
 #pragma once
-#include<iostream>
+#include <iostream>
 #include <iomanip>
-
 
 using namespace std;
 
 const int n = 9;
-int grid[n][n];
 
-void printboard()
+// Function to print the Sudoku board
+void printboard(int grid[9][9])
 {
     for (int row = 0; row < n; row++)
     {
@@ -33,7 +32,8 @@ void printboard()
     }
 }
 
-bool isSafe(int row, int col, int num)
+// Check if a number can be placed in the given position
+bool isSafe(int grid[9][9], int row, int col, int num)
 {
     for (int c = 0; c < n; c++)
     {
@@ -48,17 +48,23 @@ bool isSafe(int row, int col, int num)
     int inirow = row - row % 3;
     int inicol = col - col % 3;
 
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
             if (grid[inirow + i][inicol + j] == num) return false;
         }
     }
     return true;
 }
 
-bool isBoardEmpty() {
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
+// Check if the board is empty
+bool isBoardEmpty(int grid[9][9])
+{
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
             if (grid[i][j] != 0)
                 return false;
         }
@@ -66,14 +72,19 @@ bool isBoardEmpty() {
     return true;
 }
 
-
-bool isInitialBoardValid() {
-    for (int row = 0; row < n; ++row) {
-        for (int col = 0; col < n; ++col) {
+// Check if the initial board is valid
+bool isInitialBoardValid(int grid[9][9])
+{
+    for (int row = 0; row < n; ++row)
+    {
+        for (int col = 0; col < n; ++col)
+        {
             int num = grid[row][col];
-            if (num != 0) {
+            if (num != 0)
+            {
                 grid[row][col] = 0;  // Temporarily remove the number
-                if (!isSafe(row, col, num)) {
+                if (!isSafe(grid, row, col, num))
+                {
                     grid[row][col] = num;  // Restore
                     return false;  // Conflict detected
                 }
@@ -84,8 +95,8 @@ bool isInitialBoardValid() {
     return true;
 }
 
-
-bool solvesudoku()
+// Solve the Sudoku puzzle
+bool solvesudoku(int grid[9][9])
 {
     for (int i = 0; i < n; i++)
     {
@@ -95,12 +106,11 @@ bool solvesudoku()
             {
                 for (int num = 1; num <= 9; num++)
                 {
-                    if (isSafe(i, j, num))
+                    if (isSafe(grid, i, j, num))
                     {
                         grid[i][j] = num;
-                        if (solvesudoku())
+                        if (solvesudoku(grid))
                             return true;
-
                         grid[i][j] = 0;
                     }
                 }
@@ -111,9 +121,10 @@ bool solvesudoku()
     return true;
 }
 
-void inputValue()
+// Function to input values (not used in GUI, optional)
+void inputValue(int grid[9][9])
 {
-    cout << "Enter a number to solve sukodu:" << endl;
+    cout << "Enter a number to solve Sudoku:" << endl;
     for (int i = 0; i < n; i++)
     {
         cout << "Enter 9 numbers for row " << i + 1 << ": ";
@@ -129,115 +140,42 @@ void inputValue()
     }
 }
 
-void userSolve()
+// Function for user to manually solve (not used in GUI, optional)
+void userSolve(int grid[9][9])
 {
     int row, col, num;
-    while (true) {
-        printboard();
+    while (true)
+    {
+        printboard(grid);
         cout << "Enter Row (1-9), Column (1-9), and Number (1-9), or 0 0 0 to solve/check: ";
         cin >> row >> col >> num;
 
-        if (row == 0 && col == 0 && num == 0) {
+        if (row == 0 && col == 0 && num == 0)
+        {
             break;
         }
 
-        if (row >= 1 && row <= 9 && col >= 1 && col <= 9 && num >= 1 && num <= 9) {
-            if (grid[row - 1][col - 1] == 0) {
-                if (isSafe(row - 1, col - 1, num)) {
+        if (row >= 1 && row <= 9 && col >= 1 && col <= 9 && num >= 1 && num <= 9)
+        {
+            if (grid[row - 1][col - 1] == 0)
+            {
+                if (isSafe(grid, row - 1, col - 1, num))
+                {
                     grid[row - 1][col - 1] = num;
                 }
-                else {
+                else
+                {
                     cout << "Invalid move!\n";
                 }
             }
-            else {
+            else
+            {
                 cout << "Cell already filled.\n";
             }
         }
-        else {
+        else
+        {
             cout << "Invalid input.\n";
         }
     }
 }
-
-
-
-
-
-
-
-
-//#include "Sudoku.h"
-//#include "Sudoku-db.h"
-//#include <iostream>
-//
-//using namespace std;
-//
-//void sudokuMenu() {
-//    SudokuDB db("sudoku.db");
-//    int choice;
-//
-//    while (true) {
-//        cout << "\n--- Sudoku Menu ---\n";
-//        cout << "1. Solve New Sudoku\n";
-//        cout << "2. Save Current Sudoku\n";
-//        cout << "3. Load Sudoku Puzzle\n";
-//        cout << "4. Show Saved Puzzles\n";
-//        cout << "5. Exit Sudoku\n";
-//        cout << "Enter your choice: ";
-//        cin >> choice;
-//
-//        if (choice == 1) {
-//            inputValue();
-//            cout << "\nInput Sudoku Board:\n";
-//            printboard();
-//            if (solvesudoku()) {
-//                cout << "\nSolved Sudoku Board:\n";
-//                printboard();
-//            }
-//            else {
-//                cout << "No solution exists.\n";
-//            }
-//        }
-//        else if (choice == 2) {
-//            string name;
-//            cout << "Enter a name for this puzzle: ";
-//            cin >> name;
-//            string boardData = db.boardToString(grid);
-//            if (db.savePuzzle(name, boardData)) {
-//                cout << "Puzzle saved successfully.\n";
-//            }
-//            else {
-//                cout << "Failed to save puzzle.\n";
-//            }
-//        }
-//        else if (choice == 3) {
-//            string name;
-//            cout << "Enter the name of the puzzle to load: ";
-//            cin >> name;
-//            string data = db.loadPuzzle(name);
-//            if (!data.empty()) {
-//                db.stringToBoard(data, grid);
-//                cout << "Loaded Sudoku Puzzle:\n";
-//                printboard();
-//            }
-//            else {
-//                cout << "Puzzle not found.\n";
-//            }
-//        }
-//        else if (choice == 4) {
-//            vector<string> names = db.getAllPuzzleNames();
-//            cout << "\nSaved Puzzles:\n";
-//            for (const auto& n : names) {
-//                cout << "- " << n << "\n";
-//            }
-//        }
-//        else if (choice == 5) {
-//            cout << "Exiting Sudoku...\n";
-//            break;
-//        }
-//        else {
-//            cout << "Invalid choice. Try again.\n";
-//        }
-//    }
-//}

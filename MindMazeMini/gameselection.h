@@ -28,7 +28,8 @@ private slots:  // ✅ FIXED: split private and slots
     void launchPuzzleEasy();
     void launchPuzzleMedium();
     void launchPuzzleHard();
-
+    void launchTicTacToeSingle();
+    void launchTicTacToeDouble();
 private:
     Ui::GameSelection *ui;
 };

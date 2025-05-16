@@ -14,7 +14,7 @@ class tictactoe : public QWidget
     Q_OBJECT
 
 public:
-    explicit tictactoe(QWidget *parent = nullptr);
+    explicit tictactoe(bool singlePlayer = false, QWidget *parent = nullptr);
     ~tictactoe();
 
 private:
@@ -28,6 +28,10 @@ private:
     bool checkWin(char player);                 // Check if player has won
     bool isDraw();
     void resetBoard();
+private:
+    bool isSinglePlayer = false; // added
+    void makeAIMove();           // added
+    bool tryMove(char player);
 private slots:
     void onBackClicked();
 signals:

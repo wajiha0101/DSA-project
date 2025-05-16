@@ -35,6 +35,7 @@ private:
     bool isBoardEmpty();
     bool isInitialBoardValid();
     void highlightInvalidCells();
+    bool isSafe(int grid[9][9], int row, int col, int num); // Added declaration
 
 signals:
     void goBackToMenu();

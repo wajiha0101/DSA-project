@@ -11,7 +11,7 @@ connect(ui->PLAYButton, &QPushButton::clicked, this, &MainWindow::openGameSelect
     ui->PLAYButton->setFlat(false);
     ui->PLAYButton->setStyleSheet(
         "QPushButton {"
-        " background-color: #6A0DAD;"       // Light purple
+        " background-color: rgb(255, 170, 255);"       // Light purple
         " color: white;"                    // White text
         " font-weight: bold;"
         " padding: 6px;"
@@ -19,7 +19,7 @@ connect(ui->PLAYButton, &QPushButton::clicked, this, &MainWindow::openGameSelect
         " border: 2px solid #9B30FF;"       // Light orchid border
         " }"
         "QPushButton:hover {"
-        " background-color: #7B1FA2;"       // Hover violet
+        " background-color: rgb(255, 78, 199);"       // Hover violet
         " }"
         );
 

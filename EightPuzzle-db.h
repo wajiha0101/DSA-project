@@ -2,13 +2,14 @@
 #include <string>
 #include <vector>
 
+using namespace std;
 class EightPuzzleDB {
 public:
     EightPuzzleDB();
 
     // Returns a flat 1D vector<int> of puzzle tiles
-    std::vector<int> loadPuzzle(const std::string& difficulty);
+    vector<int> loadPuzzle(const string& difficulty);
 
     // Placeholder if you want to support saving later
-    void savePuzzle(const std::string& puzzleName, const std::vector<int>& puzzleState);
+    void savePuzzle(const string& puzzleName, const vector<int>& puzzleState);
 };

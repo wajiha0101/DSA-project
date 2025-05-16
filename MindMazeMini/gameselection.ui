@@ -19,8 +19,8 @@
   <widget class="QLabel" name="Tictactoe">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>110</y>
+     <x>270</x>
+     <y>100</y>
      <width>141</width>
      <height>121</height>
     </rect>
@@ -36,7 +36,7 @@
    <property name="geometry">
     <rect>
      <x>530</x>
-     <y>110</y>
+     <y>90</y>
      <width>121</width>
      <height>131</height>
     </rect>
@@ -51,8 +51,8 @@
   <widget class="QLabel" name="sudoku">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>110</y>
+     <x>10</x>
+     <y>100</y>
      <width>171</width>
      <height>131</height>
     </rect>
@@ -61,13 +61,13 @@
     <string notr="true">image: url(:/new/imagess/images/apps.6696.9007199266251559.b0b672ab-8ded-4145-acd1-e650150d7879.jpg);</string>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="easy_sudoku">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>0</x>
      <y>260</y>
      <width>81</width>
      <height>21</height>
@@ -83,7 +83,7 @@
   <widget class="QPushButton" name="hard_sudoku">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>100</x>
      <y>260</y>
      <width>80</width>
      <height>24</height>
@@ -99,7 +99,7 @@
   <widget class="QPushButton" name="tictactoe">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>240</x>
      <y>260</y>
      <width>80</width>
      <height>24</height>
@@ -109,7 +109,7 @@
     <string notr="true">color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
-    <string>Tic_Tac_Toe</string>
+    <string>Double</string>
    </property>
   </widget>
   <widget class="QPushButton" name="easy_puzzle">
@@ -158,6 +158,38 @@
    </property>
    <property name="text">
     <string>Hard</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tictactoe_single">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>260</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string> single</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="quitButton">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>410</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>  QUIT</string>
    </property>
   </widget>
  </widget>

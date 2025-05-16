@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(18, 18, 18);
+   <string notr="true">background-color: rgb(224, 255, 236);
 
 
 </string>
@@ -23,17 +23,17 @@
    <widget class="QLabel" name="ProjTitle">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>40</x>
       <y>20</y>
       <width>621</width>
       <height>71</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(43, 0, 57);
+     <string notr="true">background-color: rgb(255, 170, 255);
 font: 28pt &quot;Segoe UI&quot;;
 color: rgb(255, 78, 199);
-border-top-color: rgb(255, 20, 147);
+
 
 </string>
     </property>
@@ -51,16 +51,16 @@ border-top-color: rgb(255, 20, 147);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-    background-color: #FF5722;
+     <string notr="true">#PLAYButton {
+    background-color: rgb(255, 78, 199);
     color: white;
     font-weight: bold;
     padding: 6px;
     border-radius: 6px;
 }
 
-QPushButton:hover {
-    background-color: #FF7043;
+#PLAYButton:hover {
+    background-color: rgb(255, 170, 255);
 }
 </string>
     </property>

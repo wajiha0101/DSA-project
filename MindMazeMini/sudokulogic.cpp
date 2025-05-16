@@ -1,7 +1,7 @@
 #include "sudokulogic.h"
 #include "ui_sudokulogic.h"
-#include "Sudoku-db.h"
-#include "Sudoku.h"
+#include "backend/Sudoku-db.h"
+#include "backend/Sudoku.h"
 #include <QMessageBox>
 #include <QString>
 #include <QDebug>
@@ -84,7 +84,7 @@ bool SudokuLogic::isInitialBoardValid() {
             int num = grid[row][col];
             if (num != 0) {
                 grid[row][col] = 0;
-                if (!isSafe(row, col, num)) {
+                if (!isSafe(grid, row, col, num)) {
                     grid[row][col] = num;
                     return false;
                 }
@@ -110,7 +110,7 @@ void SudokuLogic::onSolveClicked()
         // ⚠️ No return here — we still proceed to solve
     }
 
-    if (solvesudoku()) {
+    if (solvesudoku(grid)) { // Line 113
         updateGridUI();
         QMessageBox::information(this, "Solved", "Sudoku solved successfully.");
     } else {
@@ -136,7 +136,7 @@ void SudokuLogic::highlightInvalidCells() {
             if (num == 0) continue;
 
             grid[row][col] = 0;
-            if (!isSafe(row, col, num)) {
+            if (!isSafe(grid, row, col, num)) {
                 QLineEdit *cell = findChild<QLineEdit*>(QString("cell_%1%2").arg(row).arg(col));
                 if (cell) {
                     cell->setStyleSheet("border: 2px solid red;");
@@ -146,7 +146,6 @@ void SudokuLogic::highlightInvalidCells() {
         }
     }
 }
-
 
 bool SudokuLogic::isUserInputValid()
 {
@@ -204,4 +203,29 @@ void SudokuLogic::onBackClicked()
 {
     emit goBackToMenu();
     this->close();
+}
+
+bool SudokuLogic::isSafe(int grid[9][9], int row, int col, int num)
+{
+    for (int c = 0; c < 9; c++)
+    {
+        if (grid[row][c] == num) return false;
+    }
+
+    for (int r = 0; r < 9; r++)
+    {
+        if (grid[r][col] == num) return false;
+    }
+
+    int inirow = row - row % 3;
+    int inicol = col - col % 3;
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (grid[inirow + i][inicol + j] == num) return false;
+        }
+    }
+    return true;
 }

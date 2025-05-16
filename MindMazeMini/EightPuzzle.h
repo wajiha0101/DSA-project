@@ -1,10 +1,8 @@
 #pragma once
-
 #include <QWidget>
 #include <QPushButton>
 #include <QVector>
 #include <QString>
-#include "EightPuzzle-db.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,7 +14,8 @@ class EightPuzzle : public QWidget {
     Q_OBJECT
 
 public:
-    explicit EightPuzzle(QWidget *parent = nullptr);
+    // ✅ This is correct
+    explicit EightPuzzle(const std::string &difficulty, QWidget *parent = nullptr);
     ~EightPuzzle();
 
 private slots:
@@ -28,10 +27,11 @@ private:
     Ui::EightPuzzle *ui;
     QVector<QPushButton*> buttons;
     QVector<int> puzzleState;
-    EightPuzzleDB db;
-
+    std::string currentDifficulty;
     void loadPuzzleFromDB(const std::string &difficulty);
     void updateUI();
     bool canSwap(int index1, int index2);
     void swapTiles(int index1, int index2);
+    void solveWithAI();
+
 };

@@ -3,6 +3,7 @@
 #include "sudokulogic.h"
 #include "tictactoe.h"
 #include "EightPuzzle.h"
+#include <QCoreApplication>
 
 GameSelection::GameSelection(QWidget *parent)
     : QWidget(parent)
@@ -29,10 +30,12 @@ GameSelection::GameSelection(QWidget *parent)
 
     connect(ui->easy_sudoku, &QPushButton::clicked, this, &GameSelection::launchSudokuEasy);
     connect(ui->hard_sudoku, &QPushButton::clicked, this, &GameSelection::launchSudokuHard);
-    connect(ui->tictactoe, &QPushButton::clicked, this, &GameSelection::launchTicTacToe);
+    connect(ui->tictactoe_single, &QPushButton::clicked, this, &GameSelection::launchTicTacToeSingle);
+    connect(ui->tictactoe, &QPushButton::clicked, this, &GameSelection::launchTicTacToeDouble);
     connect(ui->easy_puzzle, &QPushButton::clicked, this, &GameSelection::launchPuzzleEasy);
     connect(ui->medium_puzzle, &QPushButton::clicked, this, &GameSelection::launchPuzzleMedium);
     connect(ui->hard_puzzle, &QPushButton::clicked, this, &GameSelection::launchPuzzleHard);
+    connect(ui->quitButton, &QPushButton::clicked, qApp, &QCoreApplication::quit);
 
     qDebug() << "GameSelection UI loaded successfully!";
 }
@@ -58,37 +61,45 @@ void GameSelection::launchSudokuHard()
     this->hide();
 }
 
-void GameSelection::launchTicTacToe()
-{
-    tictactoe *game = new tictactoe;
+void GameSelection::launchTicTacToeSingle() {
+    tictactoe *game = new tictactoe(true); // AI mode
+    connect(game, &tictactoe::goBackToMenu, this, &GameSelection::show);
+    game->show();
+    this->hide();
+}
+void GameSelection::launchTicTacToe() {
+    tictactoe *game = new tictactoe();
     connect(game, &tictactoe::goBackToMenu, this, &GameSelection::show);
     game->show();
     this->hide();
 }
 
-void GameSelection::launchPuzzleEasy()
-{
-    qDebug() << "Puzzle Easy clicked";
-    EightPuzzle *puzzle = new EightPuzzle();
+void GameSelection::launchTicTacToeDouble() {
+    tictactoe *game = new tictactoe(false); // 2-player mode
+    connect(game, &tictactoe::goBackToMenu, this, &GameSelection::show);
+    game->show();
+    this->hide();
+}
+
+
+void GameSelection::launchPuzzleEasy() {
+    EightPuzzle *puzzle = new EightPuzzle("easy");
     puzzle->show();
     this->hide();
 }
 
-void GameSelection::launchPuzzleMedium()
-{
-    qDebug() << "Puzzle Medium clicked";
-    EightPuzzle *puzzle = new EightPuzzle();
+void GameSelection::launchPuzzleMedium() {
+    EightPuzzle *puzzle = new EightPuzzle("medium");
     puzzle->show();
     this->hide();
 }
 
-void GameSelection::launchPuzzleHard()
-{
-    qDebug() << "Puzzle Hard clicked";
-    EightPuzzle *puzzle = new EightPuzzle();
+void GameSelection::launchPuzzleHard() {
+    EightPuzzle *puzzle = new EightPuzzle("hard");
     puzzle->show();
     this->hide();
 }
+
 
 void GameSelection::on_GameSelection_customContextMenuRequested(const QPoint &pos)
 {

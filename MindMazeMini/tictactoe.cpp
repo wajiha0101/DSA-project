@@ -1,8 +1,8 @@
 #include "tictactoe.h"
 #include "ui_tictactoe.h"
-
-tictactoe::tictactoe(QWidget *parent)
-    : QWidget(parent), ui(new Ui::tictactoe)
+#include<QTimer>
+tictactoe::tictactoe(bool singlePlayer, QWidget *parent)
+    : QWidget(parent), ui(new Ui::tictactoe), isSinglePlayer(singlePlayer)
 {
     ui->setupUi(this);
 
@@ -50,6 +50,10 @@ void tictactoe::handleCellClick(int row, int col)
     } else {
         currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
         ui->status->setText(QString("Turn: %1").arg(currentPlayer));
+
+        if (isSinglePlayer && currentPlayer == 'O') {
+            QTimer::singleShot(400, this, &tictactoe::makeAIMove); // delay for realism
+        }
     }
 }
 
@@ -129,3 +133,41 @@ bool tictactoe::isDraw()
                 return false;
     return true;
 }
+
+void tictactoe::makeAIMove() {
+    // 1. Try to win
+    if (tryMove('O')) return;
+
+    // 2. Try to block X
+    if (tryMove('X')) return;
+
+    // 3. Else: pick first empty
+    for (int row = 0; row < 3; ++row)
+        for (int col = 0; col < 3; ++col)
+            if (board[row][col] == ' ') {
+                board[row][col] = 'O';
+                updateUICell(row, col, 'O');
+                currentPlayer = 'X';
+                return;
+            }
+}
+
+// Helper to simulate win/block
+bool tictactoe::tryMove(char player) {
+    for (int row = 0; row < 3; ++row) {
+        for (int col = 0; col < 3; ++col) {
+            if (board[row][col] == ' ') {
+                board[row][col] = player;
+                if (checkWin(player)) {
+                    board[row][col] = 'O'; // Place AI move here
+                    updateUICell(row, col, 'O');
+                    currentPlayer = 'X';
+                    return true;
+                }
+                board[row][col] = ' '; // Undo simulation
+            }
+        }
+    }
+    return false;
+}
+
